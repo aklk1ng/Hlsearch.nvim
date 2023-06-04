@@ -5,12 +5,11 @@ local ns_id = api.nvim_create_namespace('hlsearch')
 
 function M:render()
   local bufnr = api.nvim_get_current_buf()
+  api.nvim_buf_clear_namespace(bufnr, ns_id, 0, -1)
   if vim.v.hlsearch == 0 then
-    api.nvim_buf_clear_namespace(bufnr, ns_id, 0, -1)
     return
   end
 
-  api.nvim_buf_clear_namespace(bufnr, ns_id, 0, -1)
   local line = api.nvim_win_get_cursor(0)[1] - 1
   local col = api.nvim_win_get_cursor(0)[2]
 
